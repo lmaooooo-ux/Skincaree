@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Advice</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            color: #333;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #4C9A2A;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4C9A2A;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .advice-section p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .dynamic-advice {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid #f0f0f0;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dynamic-advice input, .dynamic-advice button {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .dynamic-advice input {
+            background-color: #f7f7f7;
+        }
+
+        .dynamic-advice input:focus {
+            outline: none;
+            border-color: #4C9A2A;
+            box-shadow: 0 0 8px rgba(76, 154, 42, 0.4);
+        }
+
+        .dynamic-advice button {
+            background-color: #4C9A2A;
+            color: white;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dynamic-advice button:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+        }
+
+        .advice-result {
+            background-color: #e9f5e1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Skincare Advice for You</h1>
+        <p>Personalized skincare tips for a radiant you!</p>
+    </header>
+
+    <div class="container">
+        <section class="advice-section">
+            <h2>Essential Skincare Tips</h2>
+            <p>1. Always cleanse your face before bedtime to remove makeup and impurities.</p>
+            <p>2. Never skip sunscreen – it shields your skin from harmful UV rays.</p>
+            <p>3. Stay hydrated and maintain a balanced diet to nurture your skin from the inside.</p>
+            <p>4. Moisturize regularly to prevent dryness and maintain a smooth texture.</p>
+            <p>5. Avoid touching your face to prevent bacteria from causing breakouts.</p>
+        </section>
+
+        <section class="dynamic-advice">
+            <h2>Get Personalized Skincare Advice</h2>
+            <p>Enter your skin concern below to receive advice:</p>
+            <input type="text" id="skinConcern" placeholder="Enter your skin concern (e.g., acne, dryness)">
+            <button onclick="provideAdvice()">Get Advice</button>
+            <div id="adviceResult" class="advice-result"></div>
+        </section>
+    </div>
+
+    <script>
+        function provideAdvice() {
+            const concern = document.getElementById('skinConcern').value.trim().toLowerCase();
+            const adviceBox = document.getElementById('adviceResult');
+
+            let advice = "";
+            switch (concern) {
+                case 'acne':
+                    advice = `
+                        <strong>Advice:</strong> For acne, try tea tree oil or benzoyl peroxide-based products. Wash gently, avoid scrubbing, and use sunscreen daily.
+                    `;
+                    break;
+                case 'dryness':
+                    advice = `
+                        <strong>Advice:</strong> For dryness, moisturize with products containing hyaluronic acid or shea butter. Drink plenty of water and avoid hot showers.
+                    `;
+                    break;
+                case 'wrinkles':
+                    advice = `
+                        <strong>Advice:</strong> Use retinol-based products and antioxidants like Vitamin C to reduce fine lines. Stay hydrated and protect your skin with SPF.
+                    `;
+                    break;
+                default:
+                    advice = `
+                        <strong>Advice:</strong> Keep your skincare routine simple. Use a gentle cleanser, a good moisturizer, and sunscreen every day!
+                    `;
+            }
+            adviceBox.innerHTML = `<p>${advice}</p>`;
+        }
+    </script>
+</body>
+</html>
